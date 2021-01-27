@@ -16,23 +16,21 @@ axios
   .then((res) => {
     objects = [...res.data.data];
     console.log(objects);
-    pushData=[]
-    objects.map(data=>{
-      pushData.push({...data,type:"products",objectID:data.uuid})
-      console.log(pushData);
-      index
-      .saveObjects(pushData)
-      .then(({ objectIDs }) => {
-        console.log(objectIDs);
+    pushData = [];
+    objects
+      .map((data) => {
+        pushData.push({ ...data, type: "products", objectID: data.uuid });
+        console.log(pushData);
+        index
+          .saveObjects(pushData)
+          .then(({ objectIDs }) => {
+            console.log(objectIDs);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
       });
-  })
-  .catch((err) => {
-    console.log(err);
-    })
-  
   });
-
-  
